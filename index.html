@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiscordBot - Your Ultimate Discord Companion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        discord: {
+                            blurple: '#5865F2',
+                            green: '#57F287',
+                            yellow: '#FEE75C',
+                            fuchsia: '#EB459E',
+                            red: '#ED4245',
+                            dark: '#36393F',
+                            darker: '#2F3136',
+                            darkest: '#202225',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-discord-darkest py-4 px-6 md:px-12 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fab fa-facebook-messenger text-discord-blurple text-2xl mr-2"></i>
+                <span class="text-xl font-bold">Messenger Bot</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#features" class="text-gray-300 hover:text-white transition-colors">Features</a>
+                <a href="#commands" class="text-gray-300 hover:text-white transition-colors">Commands</a>
+                <a href="#command-screen" class="text-gray-300 hover:text-white transition-colors">Demo</a>
+                <a href="#faq" class="text-gray-300 hover:text-white transition-colors">FAQ</a>
+            </div>
+            <div>
+                <button class="btn-primary px-6 py-2 rounded-full text-white font-medium">Add to Group</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 px-6 md:px-12 bg-discord-darkest">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0 slide-in-left">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Elevate Your <span class="gradient-text">Messenger Group</span></h1>
+                <p class="text-gray-300 text-lg md:text-xl mb-8 typing-effect" id="hero-text">The all-in-one bot that brings moderation, music, games, and more to your community.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="btn-primary px-8 py-3 rounded-full text-white font-medium pulse">Add to Group</button>
+                    <button class="btn-secondary px-8 py-3 rounded-full text-white font-medium">View Documentation</button>
+                </div>
+                <div class="mt-8 flex items-center fade-in">
+                    <div class="flex -space-x-2">
+                        <img class="w-10 h-10 rounded-full border-2 border-discord-darkest" src="assets/images/user1.png" alt="User avatar">
+                        <img class="w-10 h-10 rounded-full border-2 border-discord-darkest" src="assets/images/user2.png" alt="User avatar">
+                        <img class="w-10 h-10 rounded-full border-2 border-discord-darkest" src="assets/images/user3.png" alt="User avatar">
+                    </div>
+                    <p class="ml-4 text-gray-300">Trusted by <span class="text-white font-bold">10,000+</span> groups</p>
+                </div>
+            </div>
+            <div class="md:w-1/2 slide-in-right">
+                <img src="assets/images/nexa.png" alt="Messenger Bot Interface" class="rounded-lg shadow-2xl float">
+            </div>
+        </div>
+    </section>
+
+    <!-- Wave Divider -->
+    <div class="wave-divider bg-discord-darkest">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#2F3136" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </div>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-6 md:px-12 bg-discord-darker">
+        <div class="container mx-auto text-center mb-16 fade-in">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4">Powerful <span class="gradient-text">Features</span></h2>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto">Everything you need to create an engaging Messenger community in one bot.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Feature 1 -->
+            <div class="feature-card bg-discord-dark rounded-xl p-6 fade-in">
+                <div class="bg-discord-blurple bg-opacity-20 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fas fa-shield-alt text-discord-blurple text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Advanced Moderation</h3>
+                <p class="text-gray-300">Keep your group safe with powerful moderation tools including auto-mod, anti-spam, and customizable permissions.</p>
+            </div>
+            
+            <!-- Feature 2 -->
+            <div class="feature-card bg-discord-dark rounded-xl p-6 fade-in" style="--delay: 0.2s">
+                <div class="bg-discord-green bg-opacity-20 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fas fa-music text-discord-green text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Music Player</h3>
+                <p class="text-gray-300">Stream high-quality music from YouTube, Spotify, and SoundCloud with queue management and DJ controls.</p>
+            </div>
+            
+            <!-- Feature 3 -->
+            <div class="feature-card bg-discord-dark rounded-xl p-6 fade-in" style="--delay: 0.4s">
+                <div class="bg-discord-fuchsia bg-opacity-20 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fas fa-gamepad text-discord-fuchsia text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Fun & Games</h3>
+                <p class="text-gray-300">Keep your community entertained with mini-games, memes, trivia, and interactive challenges.</p>
+            </div>
+            
+            <!-- Feature 4 -->
+            <div class="feature-card bg-discord-dark rounded-xl p-6 fade-in" style="--delay: 0.6s">
+                <div class="bg-discord-yellow bg-opacity-20 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fas fa-bell text-discord-yellow text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Custom Notifications</h3>
+                <p class="text-gray-300">Set up welcome messages, role-based notifications, and alerts for Twitch, YouTube, and Twitter.</p>
+            </div>
+            
+            <!-- Feature 5 -->
+            <div class="feature-card bg-discord-dark rounded-xl p-6 fade-in" style="--delay: 0.8s">
+                <div class="bg-discord-red bg-opacity-20 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fas fa-chart-bar text-discord-red text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">group Stats</h3>
+                <p class="text-gray-300">Track member activity, engagement, and growth with detailed analytics and customizable reports.</p>
+            </div>
+            
+            <!-- Feature 6 -->
+            <div class="feature-card bg-discord-dark rounded-xl p-6 fade-in" style="--delay: 1s">
+                <div class="bg-discord-blurple bg-opacity-20 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fas fa-cogs text-discord-blurple text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Custom Commands</h3>
+                <p class="text-gray-300">Create your own commands with our easy-to-use interface. No coding knowledge required.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commands Section -->
+    <section id="commands" class="py-20 px-6 md:px-12 bg-discord-dark">
+        <div class="container mx-auto text-center mb-16 fade-in">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4">Popular <span class="gradient-text">Commands</span></h2>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto">Discover what our bot can do with these popular commands.</p>
+        </div>
+        
+        <div class="max-w-4xl mx-auto bg-discord-darker rounded-xl p-6 overflow-hidden">
+            <div class="space-y-4">
+                <!-- Command 1 -->
+                <div class="bg-discord-darkest rounded-lg p-4 hover:bg-opacity-80 transition-colors fade-in">
+                    <div class="flex items-start">
+                        <div class="bg-discord-blurple rounded-lg p-2 mr-4">
+                            <i class="fas fa-bolt text-white text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="text-lg font-bold">!sing</h3>
+                                <span class="text-xs bg-discord-blurple bg-opacity-20 text-discord-blurple px-2 py-1 rounded">Music</span>
+                            </div>
+                            <p class="text-gray-300 text-sm">Play music from YouTube, Spotify, or SoundCloud.</p>
+                            <div class="mt-2 text-gray-400 text-xs">Example: <code class="bg-discord-darkest px-2 py-1 rounded">/sing Imagine Dragons - Believer</code></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Command 2 -->
+                <div class="bg-discord-darkest rounded-lg p-4 hover:bg-opacity-80 transition-colors fade-in" style="--delay: 0.2s">
+                    <div class="flex items-start">
+                        <div class="bg-discord-green rounded-lg p-2 mr-4">
+                            <i class="fas fa-gavel text-white text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="text-lg font-bold">!ban</h3>
+                                <span class="text-xs bg-discord-green bg-opacity-20 text-discord-green px-2 py-1 rounded">Moderation</span>
+                            </div>
+                            <p class="text-gray-300 text-sm">Ban a user from your group with optional reason and delete message history.</p>
+                            <div class="mt-2 text-gray-400 text-xs">Example: <code class="bg-discord-darkest px-2 py-1 rounded">/ban @users</code></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Command 3 -->
+                <div class="bg-discord-darkest rounded-lg p-4 hover:bg-opacity-80 transition-colors fade-in" style="--delay: 0.4s">
+                    <div class="flex items-start">
+                        <div class="bg-discord-fuchsia rounded-lg p-2 mr-4">
+                            <i class="fas fa-laugh-beam text-white text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="text-lg font-bold">!meme</h3>
+                                <span class="text-xs bg-discord-fuchsia bg-opacity-20 text-discord-fuchsia px-2 py-1 rounded">Fun</span>
+                            </div>
+                            <p class="text-gray-300 text-sm">Get a random meme from</p>
+                            <div class="mt-2 text-gray-400 text-xs">Example: <code class="bg-discord-darkest px-2 py-1 rounded">!meme text1 text2</code></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Command 4 -->
+                <div class="bg-discord-darkest rounded-lg p-4 hover:bg-opacity-80 transition-colors fade-in" style="--delay: 0.6s">
+                    <div class="flex items-start">
+                        <div class="bg-discord-yellow rounded-lg p-2 mr-4">
+                            <i class="fas fa-chart-pie text-white text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="text-lg font-bold">!upttime</h3>
+                                <span class="text-xs bg-discord-yellow bg-opacity-20 text-discord-yellow px-2 py-1 rounded">Utility</span>
+                            </div>
+                            <p class="text-gray-300 text-sm">View group statistics and member activity.</p>
+                            <div class="mt-2 text-gray-400 text-xs">Example: <code class="bg-discord-darkest px-2 py-1 rounded">!uptime</code></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Command Screen Section -->
+    <section id="command-screen" class="py-20 px-6 md:px-12 bg-discord-darker">
+        <div class="container mx-auto text-center mb-16 fade-in">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4">See It In <span class="gradient-text">Action</span></h2>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto">Watch how our bot enhances your Messenger experience.</p>
+        </div>
+
+        <div class="max-w-6xl mx-auto space-y-16">
+            <!-- Feature 1: Creative Welcome Messages (Image Left, Content Right) -->
+            <div class="fade-in flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2 mb-10 md:mb-0 slide-in-left">
+                    <img src="assets/images/canvas.png" alt="Creative Welcome Message Demo" class="rounded-lg shadow-2xl w-full max-w-md mx-auto preview-image cursor-pointer">
+                </div>
+                <div class="md:w-1/2 slide-in-right px-6">
+                    <h3 class="text-2xl font-bold mb-4">GitHub Stats Bot Command</h3>
+                    <p class="text-gray-300 text-lg mb-8">
+                        This command retrieves and displays GitHub statistics for a specified user. It provides details such as the number of repositories, stars, forks, followers, following, contributions, and top languages used by the user. The output is presented in a visually appealing format.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Feature 2: Music Playback (Image Right, Content Left) -->
+            <div class="fade-in flex flex-col md:flex-row-reverse items-center gap-8">
+                <div class="md:w-1/2 mb-10 md:mb-0 slide-in-right">
+                    <img src="assets/images/ECONOMY.png" alt="Music Playback Demo" class="rounded-lg shadow-2xl w-full max-w-md mx-auto preview-image cursor-pointer">
+                </div>
+                <div class="md:w-1/2 slide-in-left px-6">
+                    <h3 class="text-2xl font-bold mb-4">User Profile Card Command</h3>
+                    <p class="text-gray-300 text-lg mb-8">
+                        This command generates a profile card for a specified user, displaying their details such as name, user ID, gender, and vanity URL. The output is presented in a visually appealing format.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Feature 3: Advanced Moderation Tools (Image Left, Content Right) -->
+            <div class="fade-in flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2 mb-10 md:mb-0 slide-in-left">
+                    <img src="assets/images/more--supportive--cmd.png" alt="Advanced Moderation Tools Demo" class="rounded-lg shadow-2xl w-full max-w-md mx-auto preview-image cursor-pointer">
+                </div>
+                <div class="md:w-1/2 slide-in-right px-6">
+                    <h3 class="text-2xl font-bold mb-4">Palestine Frame Command</h3>
+                    <p class="text-gray-300 text-lg mb-8">
+                        This command generates a personalized frame with the Palestinian flag and a supportive message for Palestine. The frame includes the user's profile picture, along with a hashtag or message promoting peace and justice for Palestine.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Preview Modal -->
+    <div id="imagePreviewModal" class="image-preview-modal">
+        <div class="image-preview-content">
+            <span class="close-preview">&times;</span>
+            <img id="previewImage" src="" alt="Image Preview">
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 px-6 md:px-12 bg-discord-dark">
+        <div class="container mx-auto text-center mb-16 fade-in">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4">Frequently Asked <span class="gradient-text">Questions</span></h2>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto">Find answers to common questions about our Messenger Bot.</p>
+        </div>
+        
+        <div class="max-w-3xl mx-auto">
+            <div class="space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="bg-discord-darker rounded-xl p-6 fade-in">
+                    <button class="flex justify-between items-center w-full text-left faq-toggle">
+                        <h3 class="text-xl font-bold">How do I add the bot to my group?</h3>
+                        <i class="fas fa-chevron-down text-discord-blurple transition-transform"></i>
+                    </button>
+                    <div class="mt-4 text-gray-300 faq-content">
+                        Click the "Add to Group" button at the top of this page. You'll be redirected to Group'sauthorization page where you can select the group you want to add the bot to. Make sure you have the "Manage group" permission in that group.
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="bg-discord-darker rounded-xl p-6 fade-in" style="--delay: 0.2s">
+                    <button class="flex justify-between items-center w-full text-left faq-toggle">
+                        <h3 class="text-xl font-bold">Is there a command list?</h3>
+                        <i class="fas fa-chevron-down text-discord-blurple transition-transform"></i>
+                    </button>
+                    <div class="mt-4 text-gray-300 faq-content">
+                        Yes! Once the bot is in your group, you can type <code class="bg-discord-darkest px-2 py-1 rounded">/help</code> to see all available commands. You can also visit our documentation for a complete list of commands and their usage.
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="bg-discord-darker rounded-xl p-6 fade-in" style="--delay: 0.4s">
+                    <button class="flex justify-between items-center w-full text-left faq-toggle">
+                        <h3 class="text-xl font-bold">Can I customize the bot's prefix?</h3>
+                        <i class="fas fa-chevron-down text-discord-blurple transition-transform"></i>
+                    </button>
+                    <div class="mt-4 text-gray-300 faq-content">
+                        Yes, you can customize the bot's prefix using the <code class="bg-discord-darkest px-2 py-1 rounded">/settings prefix</code> command. This allows you to use a custom prefix that fits your group's style.
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="bg-discord-darker rounded-xl p-6 fade-in" style="--delay: 0.6s">
+                    <button class="flex justify-between items-center w-full text-left faq-toggle">
+                        <h3 class="text-xl font-bold">How do I report issues or get support?</h3>
+                        <i class="fas fa-chevron-down text-discord-blurple transition-transform"></i>
+                    </button>
+                    <div class="mt-4 text-gray-300 faq-content">
+                        You can join our support group by clicking the "Support" link in the footer. Our team and community are there to help with any issues you might encounter.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-6 md:px-12 bg-discord-darkest">
+        <div class="container mx-auto text-center fade-in">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">Ready to <span class="gradient-text">Transform</span> Your group?</h2>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto mb-10">Join thousands of groups already using our bot to create engaging communities.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <button class="btn-primary px-10 py-4 rounded-full text-white font-medium text-lg pulse">Add to Group</button>
+                <button class="btn-secondary px-10 py-4 rounded-full text-white font-medium text-lg">Join Support group</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 md:px-12 bg-discord-darkest border-t border-gray-800">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <!-- Logo and Info -->
+                <div class="md:col-span-1">
+                    <div class="flex items-center mb-4">
+                        <i class="fab fa-facebook-messenger text-discord-blurple text-2xl mr-2"></i>
+                        <span class="text-xl font-bold">MessengerBot</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">The ultimate Messenger Bot for your community.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-discord text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Links 1 -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Product</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#commands" class="text-gray-400 hover:text-white transition-colors">Commands</a></li>
+                        <li><a href="#command-screen" class="text-gray-400 hover:text-white transition-colors">Demo</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Changelog</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Links 2 -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Support</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Community</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Links 3 -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">DMCA</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 MessengerBot. All rights reserved.</p>
+                <p class="text-gray-500 text-sm">Made with <i class="fas fa-heart text-discord-red"></i> for MessengerBot communities</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Button (Hidden on desktop) -->
+    <div class="fixed bottom-6 right-6 md:hidden z-50">
+        <button class="bg-discord-blurple p-4 rounded-full shadow-lg" id="mobile-menu-button">
+            <i class="fas fa-bars text-white"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div class="fixed inset-0 bg-black bg-opacity-80 z-50 mobile-menu hidden md:hidden" id="mobile-menu">
+        <div class="h-full bg-discord-darker w-3/4 max-w-xs p-6">
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex items-center">
+                    <i class="fab fa-discord text-discord-blurple text-2xl mr-2"></i>
+                    <span class="text-xl font-bold">Messenger Bot</span>
+                </div>
+                <button id="close-menu">
+                    <i class="fas fa-times text-gray-400 text-xl"></i>
+                </button>
+            </div>
+            
+            <ul class="space-y-4">
+                <li><a href="#features" class="text-white hover:text-discord-blurple block py-2 px-4 rounded transition-colors">Features</a></li>
+                <li><a href="#commands" class="text-white hover:text-discord-blurple block py-2 px-4 rounded transition-colors">Commands</a></li>
+                <li><a href="#command-screen" class="text-white hover:text-discord-blurple block py-2 px-4 rounded transition-colors">Demo</a></li>
+                <li><a href="#faq" class="text-white hover:text-discord-blurple block py-2 px-4 rounded transition-colors">FAQ</a></li>
+                <li><a href="#" class="text-white hover:text-discord-blurple block py-2 px-4 rounded transition-colors">Documentation</a></li>
+                <li><a href="#" class="text-white hover:text-discord-blurple block py-2 px-4 rounded transition-colors">Support</a></li>
+            </ul>
+            
+            <div class="mt-8">
+                <button class="btn-primary w-full py-3 rounded-full text-white font-medium">Add to Group</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
